@@ -1,3 +1,19 @@
-Pygame Slideshow
+Slideshow program made with pygame.
 
-Slides images
+1) Put your images into "slideshow" folder.
+
+2) Create an "slideshow.sld" file and write your images' names into it (per line), after that line
+write a number for delay time.
+
+For example:
+
+cat1.jpg
+5
+cat2.jpg
+3
+
+3) Enjoy!
+
+
+-How to compile-
+$ python main.py
