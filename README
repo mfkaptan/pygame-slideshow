@@ -16,4 +16,4 @@ cat2.jpg
 
 
 -How to compile-
-$ python main.py
+$ python slideshow.py
