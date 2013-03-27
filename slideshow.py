@@ -1,11 +1,11 @@
-# Mustafa Kaptan
-# Slideshow programi
-#first eclipse commit
+## Mustafa Kaptan
+## Slideshow programi
 
-import pygame,sys
+import pygame, sys
 
 # Colors
 BLACK = (0 , 0 , 0)
+WHITE = (255, 255, 255)
 
 class Image(pygame.sprite.Sprite):
     def __init__(self, picture, time, screen):
@@ -18,6 +18,23 @@ class Image(pygame.sprite.Sprite):
             
     def update(self):
         self.time = self.time
+        
+def start_countdown(screen):    
+    # Get screens width,height -> center
+    centerX = screen.get_width() / 2
+    centerY = screen.get_height() / 2
+    
+    # Font
+    countfont = pygame.font.Font('turkish.ttf', 150)
+    
+    for i in range (4, 0, -1):
+        screen.fill(BLACK)
+        if i > 1:
+            pygame.draw.circle(screen, WHITE, (centerX, centerY),150,2)
+            counttext = countfont.render("" + str(i-1) , True, WHITE)
+            screen.blit(counttext, (centerX-40, centerY-80))
+        pygame.display.flip()
+        pygame.time.delay(1000)
     
 def main():
     # Initialize
@@ -41,9 +58,6 @@ def main():
     
     # Length of line_list
     length = len(line_list)
-    
-    # Control
-    # print( "There were ",length," lines in the file.")
 
     # Save lines to Image class and Slideshow list
     for i in range (0, length, 2):
@@ -54,6 +68,8 @@ def main():
     
     # Use a timer to control FPS.
     clock = pygame.time.Clock()
+    
+    start_countdown(screen)
     # Main loop    
     while True:
         # Empty the list
