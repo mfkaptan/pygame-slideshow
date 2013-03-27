@@ -7,9 +7,9 @@ BLACK = (0 , 0 , 0)
 WHITE = (255, 255, 255)
 
 class Image(pygame.sprite.Sprite):
-    def __init__(self, picture, time, screen):
+    def __init__(self, filename, picture, time, screen):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("./slideshow/" + picture).convert()
+        self.image = pygame.image.load("./experiments/" + filename + "/" + picture).convert()
         self.time = int(time)
         self.rect = self.image.get_rect()
         self.rect.centerx = screen.get_width() / 2
@@ -50,8 +50,16 @@ def main():
     slideShow = pygame.sprite.OrderedUpdates()
     currentSlide = pygame.sprite.OrderedUpdates()
     
+    # Get file name
+    filename = sys.argv[1]
+    
     # Read from file and save
-    slideFile = open("./slideshow/slideshow.sld")
+    try:
+        slideFile = open("./experiments/" + filename + "/config.ini")
+    except IOError: 
+        print "Error: can\'t find file or read data"
+        pygame.quit()
+        
     line_list = slideFile.readlines()
     slideFile.close()
     
@@ -60,7 +68,7 @@ def main():
 
     # Save lines to Image class and Slideshow list
     for i in range (0, length, 2):
-        slideImage = Image(line_list.pop(0).replace('\n', ''), line_list.pop(0), screen)
+        slideImage = Image(filename, line_list.pop(0).replace('\n', ''), line_list.pop(0), screen)
         slideShow.add(slideImage)
         
     i = -1
