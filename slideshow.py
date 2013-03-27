@@ -1,5 +1,6 @@
 # Mustafa Kaptan
 # Slideshow programi
+#first eclipse commit
 
 import pygame,sys
 
