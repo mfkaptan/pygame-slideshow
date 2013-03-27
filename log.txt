@@ -1,0 +1,32 @@
+Slideshow 1.0.0
+
+- Slideshow dizinine kaydedilen resimleri, slideshow.sld ye kaydedilen bilgiler ile ekrana bastırıyor.
+
+
+Slideshow 1.0.2
+
+- Resimler ekranın tam ortasına bastırılıyor. Ölçeklenmeden boyutunu koruyor.
+
+Slideshow 1.0.3
+ 
+- Countdown timer eklendi:
+	Resimler başlamadan önce 3 ten geri sayım ve 1 sn siyah boşluk.
+	
+Not: Font için turkish.ttf kullanıldı.
+
+Slideshow 1.0.4 ( Yapım aşamasında )
+
+- 3. experiments/ diye default bir dizin olsun. Bunun altında örneğin:
+      - war/
+      - love/
+      - woman/
+      - violence/
+      - cat/
+ 
+gibi dizinler ve her dizinde N tane fotoğraf var. Ben
+ 
+python slideshow.py cat
+ 
+dediğimde sen git experiments/cat/config.ini dosyasını aç. Senin .sld
+dosyasını slideshow'a özel yapıyoruz  yani. Hatta dosya biçimi de INI
+dediğimiz formatta olsun
