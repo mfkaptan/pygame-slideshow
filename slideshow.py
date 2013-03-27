@@ -1,6 +1,5 @@
-## Mustafa Kaptan
-## Slideshow programi
-
+# # Mustafa Kaptan
+# # Slideshow programi
 import pygame, sys
 
 # Colors
@@ -30,9 +29,9 @@ def start_countdown(screen):
     for i in range (4, 0, -1):
         screen.fill(BLACK)
         if i > 1:
-            pygame.draw.circle(screen, WHITE, (centerX, centerY),150,2)
-            counttext = countfont.render("" + str(i-1) , True, WHITE)
-            screen.blit(counttext, (centerX-40, centerY-80))
+            pygame.draw.circle(screen, WHITE, (centerX, centerY), 150, 2)
+            counttext = countfont.render("" + str(i - 1) , True, WHITE)
+            screen.blit(counttext, (centerX - 40, centerY - 80))
         pygame.display.flip()
         pygame.time.delay(1000)
     
