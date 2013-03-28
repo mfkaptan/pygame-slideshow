@@ -2,14 +2,15 @@ Slideshow program made with pygame.
 
 1) Put your images into a folder. Then, copy that folder under "experiments" folder.
 
-2) Create an "config.ini" file and write your images' names into it (per line), after that line write a number for delay time.
+2) Create an "config.ini" file and write "[sequence]" at first.
+
+3) Write your images' names into it (per line), after that write a number for delay time.
 
 For example:
-
-cat1.jpg
-5
-cat2.jpg
-3
+[sequence]
+cat1.jpg=1000
+cat2.jpg=4000
+cat3.jpg=3000
 
 3) Enjoy!!!
 
