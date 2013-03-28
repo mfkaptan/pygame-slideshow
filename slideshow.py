@@ -67,7 +67,7 @@ def main():
     for line in line_list:
         slideImage = Image(filename, line[0], line[1], screen)
         slideShow.add(slideImage)
-    
+        
     i = -1
     
     # Use a timer to control FPS.
