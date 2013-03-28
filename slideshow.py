@@ -1,6 +1,6 @@
 # # Mustafa Kaptan
 # # Slideshow programi
-import pygame, sys
+import pygame, sys , ConfigParser
 
 # Colors
 BLACK = (0 , 0 , 0)
@@ -31,7 +31,7 @@ def start_countdown(screen):
         if i > 1:
             pygame.draw.circle(screen, WHITE, (centerX, centerY), 150, 2)
             counttext = countfont.render("" + str(i - 1) , True, WHITE)
-            screen.blit(counttext, (centerX - 40, centerY - 80))
+            screen.blit(counttext, (centerX - 40, centerY - 90))
         pygame.display.flip()
         pygame.time.delay(1000)
     
@@ -53,24 +53,21 @@ def main():
     # Get file name
     filename = sys.argv[1]
     
-    # Read from file and save
+    config = ConfigParser.RawConfigParser()
     try:
-        slideFile = open("./experiments/" + filename + "/config.ini")
+        config.readfp(open("./experiments/" + filename + "/config.ini"))
     except IOError: 
         print "Error: can\'t find file or read data"
         pygame.quit()
-        
-    line_list = slideFile.readlines()
-    slideFile.close()
     
-    # Length of line_list
+    line_list = config.items('sequence')
     length = len(line_list)
-
+    
     # Save lines to Image class and Slideshow list
-    for i in range (0, length, 2):
-        slideImage = Image(filename, line_list.pop(0).replace('\n', ''), line_list.pop(0), screen)
+    for line in line_list:
+        slideImage = Image(filename, line[0], line[1], screen)
         slideShow.add(slideImage)
-        
+    
     i = -1
     
     # Use a timer to control FPS.
@@ -89,7 +86,7 @@ def main():
         currentSlide.empty()
         i += 1
         
-        if i < length / 2:
+        if i < length:
             for image in slideShow.sprites():
                 currentSlide.add(image)
                 slideShow.remove_internal(image)
@@ -104,7 +101,7 @@ def main():
             DELAY = slide.time
         currentSlide.draw(screen)
         pygame.display.flip()
-        pygame.time.delay(DELAY * 1000)
+        pygame.time.delay(DELAY)
         clock.tick(25)
         
     pygame.quit()
