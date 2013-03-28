@@ -79,6 +79,12 @@ def main():
     start_countdown(screen)
     # Main loop    
     while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:  # If user hit ESC
+                return False
+            if event.type == pygame.QUIT:  # If user clicked close 
+                return False
+            
         # Empty the list
         currentSlide.empty()
         i += 1
@@ -91,12 +97,6 @@ def main():
         else:
             # TODO : do something!
             return False
-        
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:  # If user hit ESC
-                return False
-            if event.type == pygame.QUIT:  # If user clicked close 
-                return False
         
         # Draw the screen based on the timer.
         screen.fill(BLACK)
