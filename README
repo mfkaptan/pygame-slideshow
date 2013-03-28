@@ -1,6 +1,6 @@
 Slideshow program made with pygame.
 
-1) Put your images into "slideshow" folder.
+1) Put your images into a folder. Then, copy that folder under "experiments" folder.
 
 2) Create an "config.ini" file and write your images' names into it (per line), after that line write a number for delay time.
 
