@@ -22,6 +22,6 @@ $ python slideshow.py cat
 
 komutuyla ulaşılabiliyor. Bu komut experiments/cat/config.ini dosyasını açıyor.
 
-Slideshow 1.0.5 ( Yapım aşamasında )
+Slideshow 1.0.5
 
-- INI formatı
+- INI formatı artık çalışıyor!
