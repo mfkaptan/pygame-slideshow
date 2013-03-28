@@ -2,8 +2,7 @@ Slideshow program made with pygame.
 
 1) Put your images into "slideshow" folder.
 
-2) Create an "slideshow.sld" file and write your images' names into it (per line), after that line
-write a number for delay time.
+2) Create an "config.ini" file and write your images' names into it (per line), after that line write a number for delay time.
 
 For example:
 
@@ -16,7 +15,7 @@ cat2.jpg
 
 
 -How to compile-
-$ python slideshow.py
+$ python slideshow.py cat
 
 
 
