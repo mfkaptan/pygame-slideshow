@@ -1,6 +1,7 @@
 # # Mustafa Kaptan
 # # Slideshow programi
 import pygame, sys , ConfigParser
+from pygame import gfxdraw
 
 # Colors
 BLACK = (0 , 0 , 0)
@@ -29,7 +30,8 @@ def start_countdown(screen):
     for i in range (4, 0, -1):
         screen.fill(BLACK)
         if i > 1:
-            pygame.draw.circle(screen, WHITE, (centerX, centerY), 150, 2)
+			# Draw an anti-aliased circle
+            pygame.gfxdraw.aacircle(screen, centerX, centerY, 150, WHITE)
             counttext = countfont.render("" + str(i - 1) , True, WHITE)
             screen.blit(counttext, (centerX - 40, centerY - 90))
         pygame.display.flip()
@@ -46,6 +48,9 @@ def main():
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     pygame.display.set_caption("Slideshow")
     
+	# Invisible mouse
+    pygame.mouse.set_visible(False)
+
     # List of sprite images
     slideShow = pygame.sprite.OrderedUpdates()
     currentSlide = pygame.sprite.OrderedUpdates()
@@ -60,11 +65,11 @@ def main():
         print "Error: can\'t find file or read data"
         pygame.quit()
     
-    line_list = config.items('sequence')
-    length = len(line_list)
+    lineList = config.items('sequence')
+    length = len(lineList)
     
     # Save lines to Image class and Slideshow list
-    for line in line_list:
+    for line in lineList:
         slideImage = Image(filename, line[0], line[1], screen)
         slideShow.add(slideImage)
         
@@ -73,6 +78,7 @@ def main():
     # Use a timer to control FPS.
     clock = pygame.time.Clock()
     
+	# Start the countdown
     start_countdown(screen)
     # Main loop    
     while True:
@@ -86,13 +92,14 @@ def main():
         currentSlide.empty()
         i += 1
         
+		# Just add 1 sprite into it
         if i < length:
             for image in slideShow.sprites():
                 currentSlide.add(image)
                 slideShow.remove_internal(image)
                 break
         else:
-            # TODO : do something!
+            # TODO : do something?!
             return False
         
         # Draw the screen based on the timer.
@@ -106,6 +113,5 @@ def main():
         
     pygame.quit()
             
-# This doesn't run on Android.
 if __name__ == "__main__":
     main()
