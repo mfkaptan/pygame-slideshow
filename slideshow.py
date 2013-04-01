@@ -15,9 +15,6 @@ class Image(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = screen.get_width() / 2
         self.rect.centery = screen.get_height() / 2
-            
-    def update(self):
-        self.time = self.time
         
 def start_countdown(screen):    
     # Get screens width,height -> center
